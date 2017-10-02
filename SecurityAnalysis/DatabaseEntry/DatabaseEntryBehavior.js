@@ -48,11 +48,19 @@ function clearAllInputs(btnClear) {
     btnClear.disabled = true;
 }
 function validateAndSend() {
+    if (validateForm) {
+    }
+}
+function validateForm() {
     var inputElements = getAllInputElements();
     var txtDate = inputElements["txtDate"];
     if (!validateDate(txtDate.value)) {
         txtDate.focus();
+        txtDate.validationMessage = "test val";
+        return false;
     }
+    return true;
+    //txtDate.val
 }
 function validateDate(dateInput) {
     var internalDate = new Date(dateInput);

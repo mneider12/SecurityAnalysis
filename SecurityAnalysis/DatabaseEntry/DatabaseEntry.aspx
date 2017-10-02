@@ -11,8 +11,8 @@
         <div>
             <div>   <%-- Data Entry Section --%>
                 <div> <%-- Date Section --%>
-                    <asp:Label runat="server" ID="lblDate" Text="Date:" AssociatedControlID="lblDate" />
-                    <asp:TextBox runat="server" ID="txtDate" TextMode="Date" />
+                    <asp:Label runat="server" ID="lblDate" Text="Date:" AssociatedControlID="lblDate"/>
+                    <asp:TextBox runat="server" ID="txtDate" TextMode="Date" required="true" />
                 </div>
                 <div> <%-- Ticker section --%>
                     <asp:Label runat="server" ID="lblTicker" Text="Ticker:" AssociatedControlId="txtTicker" />

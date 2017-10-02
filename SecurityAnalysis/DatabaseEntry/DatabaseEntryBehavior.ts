@@ -64,14 +64,25 @@ function clearAllInputs(btnClear: HTMLButtonElement): void {
 }
 
 function validateAndSend(): void {
+    if (validateForm) {
+
+    }
+}
+
+function validateForm(): boolean {
     let inputElements: inputElementsCollection = getAllInputElements();
 
     let txtDate = inputElements["txtDate"];
     if (!validateDate(txtDate.value)) {
         txtDate.focus();
+        txtDate.validationMessage = "test val";
+        return false;
     }
 
+    return true;
+    //txtDate.val
 }
+
 
 function validateDate(dateInput: string): boolean {
     let internalDate: Date = new Date(dateInput);
