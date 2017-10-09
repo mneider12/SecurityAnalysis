@@ -10,6 +10,8 @@
     <form id="form1" runat="server">
     <div>
         <asp:Button runat="server" ID="btnCreateDatabase" Text="Create Database" OnClick="btnCreateDatabase_Click" />
+        <asp:Button runat="server" ID="btnDeleteDatabase" Text="Delete Database" OnClick="btnDeleteDatabase_Click" />
+        <asp:Button runat="server" ID="btnBackupDatabase" Text="Backup Database" OnClick="btnBackupDatabase_Click" />
     </div>
     </form>
 </body>

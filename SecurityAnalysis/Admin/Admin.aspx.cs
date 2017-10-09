@@ -1,15 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using SecurityAnalysis.Configuration;
-using System.Data.SQLite;
 using SecurityAnalysis.Core.Database;
+using SecurityAnalysis.Core.FileSystem;
 
 namespace SecurityAnalysis.Admin
 {
@@ -22,10 +13,18 @@ namespace SecurityAnalysis.Admin
 
         protected void btnCreateDatabase_Click(object sender, EventArgs e)
         {
+            FileSystemHelper.create();
             DatabaseHelper.create();
         }
 
-        private const string DATABASE_DIRECTORY = "../Data";
-        private const string DATABASE_FILE_NAME = "database.sqlite";
+        protected void btnDeleteDatabase_Click(object sender, EventArgs e)
+        {
+            DatabaseHelper.delete();
+        }
+
+        protected void btnBackupDatabase_Click(object sender, EventArgs e)
+        {
+            DatabaseHelper.backup();
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Data.SQLite;
+﻿using SecurityAnalysis.Core.FileSystem;
+using System.Data.SQLite;
 using System.IO;
 using System.Web;
 
@@ -10,8 +11,12 @@ namespace SecurityAnalysis.Core.Database
 
         private static string getPath()
         {
-            string databaseFilePath = Path.Combine("~", DatabaseConstants.DATABASE_DIRECTORY, DatabaseConstants.DATABASE_FILE_NAME);
-            return HttpContext.Current.Server.MapPath(databaseFilePath);
+            return Path.Combine(FileSystemHelper.getDataDirectory(), DatabaseConstants.DATABASE_FILE_NAME);
+        }
+
+        private static string getBackupPath()
+        {
+            return Path.Combine(FileSystemHelper.getBackupDirectory(), DatabaseConstants.DATABASE_FILE_NAME);
         }
 
         public static SQLiteConnection open()
@@ -24,18 +29,31 @@ namespace SecurityAnalysis.Core.Database
 
         public static void create()
         {
-            string directoryFilePath = Path.Combine("~", DatabaseConstants.DATABASE_DIRECTORY);
-            directoryFilePath = HttpContext.Current.Server.MapPath(directoryFilePath);
-            Directory.CreateDirectory(directoryFilePath);      // Make sure the database directory exists
-
             string databaseFilePath = getPath();
-            SQLiteConnection.CreateFile(databaseFilePath);
-
-            using (SQLiteConnection databasebConnection = open())
+            if (!File.Exists(databaseFilePath))  //database can't already exist
             {
-                createTransactionsTable(databasebConnection);
-                createPricesTable(databasebConnection);
+                SQLiteConnection.CreateFile(databaseFilePath);
+
+                using (SQLiteConnection databasebConnection = open())
+                {
+                    createTransactionsTable(databasebConnection);
+                    createPricesTable(databasebConnection);
+                }
             }
+        }
+
+        public static void delete()
+        {
+            File.Delete(getPath());
+        }
+
+        public static void backup()
+        {
+            string backupFilePath = getBackupPath();
+
+
+            File.Delete(backupFilePath);
+            File.Copy(getPath(), backupFilePath);
         }
 
         private static void createTransactionsTable(SQLiteConnection databaseConnection)

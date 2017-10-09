@@ -75,7 +75,6 @@
     <Content Include="Admin\Admin.aspx" />
     <Content Include="packages.config" />
     <Content Include="tsconfig.json" />
-    <Content Include="ClassDiagram1.cd" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -95,7 +94,6 @@
     <Compile Include="Admin\Admin.aspx.designer.cs">
       <DependentUpon>Admin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Configuration\Settings.cs" />
     <Compile Include="Core\Database\DatabaseConstants.cs" />
     <Compile Include="Core\Database\DatabaseHelper.cs" />
     <Compile Include="Core\FileSystem\FileSystemHelper.cs" />
