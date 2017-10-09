@@ -12,7 +12,7 @@
             <div>   <%-- Data Entry Section --%>
                 <div> <%-- Date Section --%>
                     <asp:Label runat="server" ID="lblDate" Text="Date:" AssociatedControlID="lblDate"/>
-                    <asp:TextBox runat="server" ID="txtDate" TextMode="Date" required="true" />
+                    <asp:TextBox runat="server" ID="txtDate" TextMode="Date"  />
                 </div>
                 <div> <%-- Ticker section --%>
                     <asp:Label runat="server" ID="lblTicker" Text="Ticker:" AssociatedControlId="txtTicker" />
@@ -20,7 +20,7 @@
                 </div>
                 <div> <%-- Number of shares section --%>
                     <asp:Label runat="server" ID="lblNumberOfShares" Text="Shares" AssociatedControlID="txtNumberOfShares" />
-                    <asp:TextBox runat="server" ID="txtNumberOfShares"  />
+                    <asp:TextBox runat="server" ID="txtNumberOfShares" />
                 </div>
                 <div> <%-- Total cost section --%>
                     <asp:Label runat="server" ID="lblTotalCost" Text="Total Cost" AssociatedControlID="txtTotalCost" />
@@ -28,8 +28,8 @@
                 </div>
             </div>
             <div>   <%-- Control buttons --%>
-                <button id="btnClear" type="button" disabled="disabled">Clear</button>  <%-- Client only --%>
-                <asp:Button runat="server" ID="btnSend" Text="Enter" CausesValidation="true" Enabled="true" />
+                <asp:Button runat="server" ID="btnClear" Text="Clear" disabled="true" CausesValidation="false" />
+                <asp:Button runat="server" ID="btnSend" Text="Enter" CausesValidation="true" Enabled="true" OnClick="btnSend_Click" />
             </div>
         </div>
         <asp:ScriptManager ID="SMgr" runat="server">

@@ -1,5 +1,7 @@
-﻿using System;
+﻿using SecurityAnalysis.Core.Transaction;
+using System;
 using System.Collections.Generic;
+using System.Data.SQLite;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -13,16 +15,58 @@ namespace SecurityAnalysis
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
         }
 
-        private void initializeDatabase()
+        protected void btnSend_Click(object sender, EventArgs e)
         {
-            Directory.CreateDirectory(DATABASE_DIRECTORY);      // Make sure the database directory exists
+            DateTime date;
+            string ticker;
+            int numberOfShares;
+            Decimal totalCost;
+
+            if (parseInputs(out date, out ticker, out numberOfShares, out totalCost))
+            {
+                Transaction transaction = new Transaction(date, ticker, numberOfShares, totalCost);
+                if (!transaction.commit())
+                {
+                    commitFailed();
+                }
+            }
+            else
+            {
+                commitFailed();
+            }
+           
+        }
+
+        private bool parseInputs(out DateTime date, out string ticker, out int numberOfShares, out Decimal totalCost)
+        {
+            bool parseFailed = false;
+            if (!DateTime.TryParse(txtDate.Text, out date))
+            {
+                parseFailed = true;
+            }
+
+            ticker = txtTicker.Text;    // no validation currently
+
+            if (!int.TryParse(txtNumberOfShares.Text, out numberOfShares))
+            {
+                parseFailed = true;
+            }
+
+            if (!Decimal.TryParse(txtTotalCost.Text, out totalCost))
+            {
+                parseFailed = true;
+            }
+
+            return !parseFailed;
 
         }
 
-        private const string DATABASE_DIRECTORY = "Data";
-        private const string DATABASE_FILE_NAME = "data.db";
+        private void commitFailed()
+        {
+
+        }
     }
 }

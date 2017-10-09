@@ -22,21 +22,12 @@ namespace SecurityAnalysis.Admin {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// lblDatabaseLocation control.
+        /// btnCreateDatabase control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDatabaseLocation;
-        
-        /// <summary>
-        /// txtDatabaseLocation control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDatabaseLocation;
+        protected global::System.Web.UI.WebControls.Button btnCreateDatabase;
     }
 }

@@ -9,8 +9,7 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <asp:Label runat="server" ID="lblDatabaseLocation" Text="Database Location: " AssociatedControlID="txtDatabaseLocation" />
-        <asp:TextBox runat="server" ID="txtDatabaseLocation" />
+        <asp:Button runat="server" ID="btnCreateDatabase" Text="Create Database" OnClick="btnCreateDatabase_Click" />
     </div>
     </form>
 </body>

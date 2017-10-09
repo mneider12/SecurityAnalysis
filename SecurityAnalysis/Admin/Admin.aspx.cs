@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using SecurityAnalysis.Configuration;
+using System.Data.SQLite;
+using SecurityAnalysis.Core.Database;
 
 namespace SecurityAnalysis.Admin
 {
@@ -15,28 +17,15 @@ namespace SecurityAnalysis.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Directory.CreateDirectory(CONFIGURATION_DIRECTORY);
-            if (!File.Exists(SETTINGS_FILE_NAME))
-            {
-               Settings = new Settings();
-            }
-            else
-            {
-                IFormatter formatter = new BinaryFormatter();
-               // using (Stream stream = new FileStream("Configuration/Settings"))
-            }
-            Stream stream = new FileStream("Configuration/Settings.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
-            //FileStream configFileStream = new FileStream("")
-            lblDatabaseLocation.Text = Directory.GetCurrentDirectory();
+
         }
 
-        #region private constants
-        private const string CONFIGURATION_DIRECTORY = "Configuration";
-        private const string SETTINGS_FILE_NAME = "Settings.bin";
-        #endregion
+        protected void btnCreateDatabase_Click(object sender, EventArgs e)
+        {
+            DatabaseHelper.create();
+        }
 
-        #region private properties
-        private Settings Settings { get; set; }
-        #endregion
+        private const string DATABASE_DIRECTORY = "../Data";
+        private const string DATABASE_FILE_NAME = "database.sqlite";
     }
 }
