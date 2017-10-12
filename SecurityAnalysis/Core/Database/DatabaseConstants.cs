@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
+﻿/// <summary>
+/// hello
+/// </summary>
 namespace SecurityAnalysis.Core.Database
 {
+    /// <summary>
+    /// General usage constants for dealing with the database
+    /// </summary>
     public static class DatabaseConstants
     {
-        public const string DATABASE_DIRECTORY = "Data";
-        public const string DATABASE_FILE_NAME = "database.sqlite";
-        public const string TRANACTIONS_TABLE = "transactions";
-        public const string PRICES_TABLE = "prices";
+        public const string CALCULATED_STATISTICS_TABLE = "calculated_statistics";
     }
 }

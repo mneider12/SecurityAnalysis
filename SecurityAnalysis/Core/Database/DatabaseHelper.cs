@@ -1,7 +1,6 @@
 ﻿using SecurityAnalysis.Core.FileSystem;
 using System.Data.SQLite;
 using System.IO;
-using System.Web;
 
 
 namespace SecurityAnalysis.Core.Database
@@ -11,12 +10,12 @@ namespace SecurityAnalysis.Core.Database
 
         private static string getPath()
         {
-            return Path.Combine(FileSystemHelper.getDataDirectory(), DatabaseConstants.DATABASE_FILE_NAME);
+            return Path.Combine(FileSystemHelper.getDataDirectory(), DATABASE_FILE_NAME);
         }
 
         private static string getBackupPath()
         {
-            return Path.Combine(FileSystemHelper.getBackupDirectory(), DatabaseConstants.DATABASE_FILE_NAME);
+            return Path.Combine(FileSystemHelper.getBackupDirectory(), DATABASE_FILE_NAME);
         }
 
         public static SQLiteConnection open()
@@ -56,30 +55,74 @@ namespace SecurityAnalysis.Core.Database
             File.Copy(getPath(), backupFilePath);
         }
 
+        public static void createTransactionsTable()
+        {
+            using (SQLiteConnection databaseConnection = open())
+            {
+                createTransactionsTable(databaseConnection);
+            }
+        }
+
         private static void createTransactionsTable(SQLiteConnection databaseConnection)
         {
-            string sql = "create table " + DatabaseConstants.TRANACTIONS_TABLE +
+            string sql = "create table " + TransactionsTable.NAME +
                          "(" +
-                             "id integer PRIMARY KEY," +
-                             "date integer NOT NULL," +
-                             "ticker text NOT NULL," +
-                             "shares integer NOT NULL," +
-                             "cost numeric NOT NULL" +
+                             TransactionsTable.COLUMN_ID + " integer PRIMARY KEY," +
+                             TransactionsTable.COLUMN_DATE + " integer NOT NULL," +
+                             TransactionsTable.COLUMN_TICKER + " text NOT NULL," +
+                             TransactionsTable.COLUMN_SHARES + " integer NOT NULL," +
+                             TransactionsTable.COLUMN_COST + " numeric NOT NULL" +
                           ")";
 
             executeNonQuery(sql, databaseConnection);
         }
 
+        public static void createPricesTable()
+        {
+            using (SQLiteConnection databaseConnection = open())
+            {
+                createPricesTable(databaseConnection);
+            }
+        }
+
         private static void createPricesTable(SQLiteConnection databaseConnection)
         {
-            string sql = "create table " + DatabaseConstants.PRICES_TABLE +
+            string sql = "create table " + PricesTable.NAME +
                         "(" +
-                            "date integer PRIMARY KEY," +
-                            "ticker text PRIMARY KEY," +
-                            "close numeric NOT NULL" +
+                            PricesTable.COLUMN_DATE + " integer NOT NULL," +
+                            PricesTable.COLUMN_TICKER + " text NOT NULL," +
+                            PricesTable.COLUMN_CLOSE + " numeric NOT NULL," +
+                            "PRIMARY KEY(date, ticker)" +
                         ")";
 
             executeNonQuery(sql, databaseConnection);
+        }
+
+        public static void createCumulativeStatisticsTable()
+        {
+            using (SQLiteConnection databaseConnection = open())
+            {
+                createCumulativeStatisticsTable(databaseConnection);
+            }
+        }
+
+        private static void createCumulativeStatisticsTable(SQLiteConnection databaseConnection)
+        {
+            string sql = "create table " + DatabaseConstants.CALCULATED_STATISTICS_TABLE +
+                        "(" +
+                            "date integer PRIMARY KEY," +
+                            "portfolio_value" +
+                        ")";
+
+            executeNonQuery(sql, databaseConnection);
+        }
+
+        public static void executeNonQuery(string sql)
+        {
+            using (SQLiteConnection databaseConnection = open())
+            {
+                executeNonQuery(sql, databaseConnection);
+            }
         }
 
         private static void executeNonQuery(string sql, SQLiteConnection databaseConnection)
@@ -89,5 +132,7 @@ namespace SecurityAnalysis.Core.Database
                 command.ExecuteNonQuery();
             }
         }
+
+        private const string DATABASE_FILE_NAME = "database.sqlite";
     }
 }

@@ -36,7 +36,7 @@ namespace SecurityAnalysis.Core.Transaction
 
         private bool insert()
         {
-            string insertTransactionSql = "INSERT INTO " + DatabaseConstants.TRANACTIONS_TABLE +
+            string insertTransactionSql = "INSERT INTO " + TransactionsTable.NAME +
                                           " VALUES (" +
                                                     ID +
                                                     ",'" + Date.Ticks + "'" +

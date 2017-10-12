@@ -47,6 +47,10 @@ namespace SecurityAnalysis
             {
                 parseFailed = true;
             }
+            else
+            {
+                date = date.Date;   // make sure we don't store dates with times.
+            }
 
             ticker = txtTicker.Text;    // no validation currently
 
