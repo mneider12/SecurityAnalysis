@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="DatabaseEntry.aspx.cs" Inherits="SecurityAnalysis.DatabaseViewer" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="DatabaseEntry.aspx.cs" Inherits="SecurityAnalysis.DatabaseEntry" %>
 
 <!DOCTYPE html>
 
@@ -9,7 +9,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <div>   <%-- Data Entry Section --%>
+            <div class="column">   <%-- Data Entry Section --%>
                 <div> <%-- Date Section --%>
                     <asp:Label runat="server" ID="lblDate" Text="Date:" AssociatedControlID="lblDate"/>
                     <asp:TextBox runat="server" ID="txtDate" TextMode="Date"  />
@@ -30,6 +30,9 @@
             <div>   <%-- Control buttons --%>
                 <asp:Button runat="server" ID="btnClear" Text="Clear" disabled="true" CausesValidation="false" />
                 <asp:Button runat="server" ID="btnSend" Text="Enter" CausesValidation="true" Enabled="true" OnClick="btnSend_Click" />
+            </div>
+            <div class="column">
+                <asp:Button runat="server" ID="btnTransferCash" Text="Transfer" CausesValidation="false" />
             </div>
         </div>
         <asp:ScriptManager ID="SMgr" runat="server">

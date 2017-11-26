@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Admin\Admin.aspx" />
+    <Content Include="DatabaseEntry\DatabaseEntry.css" />
     <Content Include="packages.config" />
     <Content Include="tsconfig.json" />
     <None Include="Web.Debug.config">
@@ -95,6 +96,7 @@
       <DependentUpon>Admin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Core\Database\CalculatedStatisticsTable.cs" />
+    <Compile Include="Core\Database\CashTransactions.cs" />
     <Compile Include="Core\Database\DatabaseConstants.cs" />
     <Compile Include="Core\Database\DatabaseHelper.cs" />
     <Compile Include="Core\Database\PricesTable.cs" />

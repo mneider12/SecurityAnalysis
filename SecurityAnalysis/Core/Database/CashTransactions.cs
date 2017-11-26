@@ -5,31 +5,33 @@ using System.Web;
 
 namespace SecurityAnalysis.Core.Database
 {
-    /// <summary>
-    /// Methods for manipulating the calculated_statistics table
-    /// </summary>
-    public static class CalculatedStatisticsTable
+    public static class CashTransactions
     {
         #region public constants
         /// <summary>
-        /// Name of the table
+        /// Table name
         /// </summary>
-        public const string NAME = "calculated_statistics";
-        #region columns
+        public const string NAME = "cash_transactions";
+        #region column names
         /// <summary>
-        /// Date that calculated statistics are valid as of
+        /// Unique transaction ID
+        /// </summary>
+        public const string COLUMN_ID = "id";
+        /// <summary>
+        /// Transaction date
         /// </summary>
         public const string COLUMN_DATE = "date";
         /// <summary>
-        /// Value of portfolio
+        /// Transaction Amount
         /// </summary>
-        public const string COLUMN_PORTFOLIO_VALUE = "portfolio_value";
+        public const string COLUMN_AMOUNT = "amount";
         #endregion
         /// <summary>
-        /// Table primary key. Includes parentheses.
+        /// Primary key including parentheses
         /// </summary>
-        public const string PRIMARY_KEY = "(" + COLUMN_DATE + ")";
+        public const string PRIMARY_KEY = "(" + COLUMN_ID + ")";
         #endregion
+
         #region public methods
         /// <summary>
         /// Create the table
@@ -45,8 +47,9 @@ namespace SecurityAnalysis.Core.Database
         /// </summary>
         private const string CREATE_TABLE = "create table " + NAME +
                                                 "(" +
-                                                    COLUMN_DATE + " integer PRIMARY KEY," +
-                                                    COLUMN_PORTFOLIO_VALUE + "numeric" +
+                                                    COLUMN_ID + "integer PRIMARY KEY," +
+                                                    COLUMN_DATE + "integer NOT NULL," +
+                                                    COLUMN_AMOUNT + "numeric NOT NULL" +
                                                 ")";
         #endregion
     }
