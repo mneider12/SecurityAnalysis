@@ -96,14 +96,16 @@
       <DependentUpon>Admin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Core\Database\CalculatedStatisticsTable.cs" />
-    <Compile Include="Core\Database\CashTransactions.cs" />
+    <Compile Include="Core\Database\CashTransactionsTable.cs" />
     <Compile Include="Core\Database\DatabaseConstants.cs" />
     <Compile Include="Core\Database\DatabaseHelper.cs" />
+    <Compile Include="Core\Database\DatabaseTable.cs" />
     <Compile Include="Core\Database\PricesTable.cs" />
     <Compile Include="Core\Database\TransactionsTable.cs" />
     <Compile Include="Core\FileSystem\FileSystemHelper.cs" />
     <Compile Include="Core\Model\CalculatedStatisticsHelper.cs" />
     <Compile Include="Core\Model\Transaction.cs" />
+    <Compile Include="Core\RunTime\HttpContextManager.cs" />
     <Compile Include="DatabaseEntry\DatabaseEntry.aspx.cs">
       <DependentUpon>DatabaseEntry.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

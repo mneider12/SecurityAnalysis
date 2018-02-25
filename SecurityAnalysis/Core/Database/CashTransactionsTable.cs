@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace SecurityAnalysis.Core.Database
 {
-    public static class CashTransactions
+    public static class CashTransactionsTable 
     {
         #region public constants
         /// <summary>
@@ -40,6 +37,12 @@ namespace SecurityAnalysis.Core.Database
         {
             DatabaseHelper.executeNonQuery(CREATE_TABLE);
         }
+
+        public static void insert(DateTime date, decimal amount)
+        {
+            //string insertSql = getInsertSql(date, amount);
+            // DatabaseHelper.executeNonQuery()
+        }
         #endregion
         #region private constants
         /// <summary>
@@ -52,5 +55,11 @@ namespace SecurityAnalysis.Core.Database
                                                     COLUMN_AMOUNT + "numeric NOT NULL" +
                                                 ")";
         #endregion
+        #region private methods
+        private static string getInsertSql(DateTime date, decimal amount)
+        {
+            return "Insert Into " + NAME + " ";
+        }
+        #endregion 
     }
 }

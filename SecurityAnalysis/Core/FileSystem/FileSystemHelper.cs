@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SecurityAnalysis.Core.RunTime;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace SecurityAnalysis.Core.FileSystem
         public static string getDataDirectory()
         {
             string directoryPath = Path.Combine(HOME_DIRECTORY, DATA_DIRECTORY);
-            return HttpContext.Current.Server.MapPath(directoryPath);
+            return HttpContextManager.MapServerPath(directoryPath);
         }
 
         public static string getBackupDirectory()

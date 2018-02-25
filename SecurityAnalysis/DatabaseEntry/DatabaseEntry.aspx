@@ -28,12 +28,15 @@
                 </div>
             </div>
             <div>   <%-- Control buttons --%>
-                <asp:Button runat="server" ID="btnClear" Text="Clear" disabled="true" CausesValidation="false" />
+                <asp:Button runat="server" ID="btnClear" Text="Clear" enabled="false" CausesValidation="false" />
                 <asp:Button runat="server" ID="btnSend" Text="Enter" CausesValidation="true" Enabled="true" OnClick="btnSend_Click" />
             </div>
             <div class="column">
                 <asp:Button runat="server" ID="btnTransferCash" Text="Transfer" CausesValidation="false" />
             </div>
+            <asp:Panel ID="pnlTransferCash" runat="server" >
+
+            </asp:Panel>
         </div>
         <asp:ScriptManager ID="SMgr" runat="server">
             <Scripts>
