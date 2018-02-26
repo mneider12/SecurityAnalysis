@@ -8,10 +8,15 @@ using System.Linq;
 using System.Web;
 using System.Xml.Serialization;
 
-namespace SecurityAnalysis.Core.Transaction
+namespace SecurityAnalysis.Core.Model
 {
     public class Transaction
     {
+        public Transaction(DateTime date, decimal amount)
+        {
+            Date = date;
+            Amount = amount;
+        }
 
         public Transaction(DateTime date, string ticker, int shares, decimal totalCost)
         {
@@ -134,6 +139,7 @@ namespace SecurityAnalysis.Core.Transaction
         public string Ticker { get; set; }
         public int NumberOfShares { get; set; }
         public decimal TotalCost { get; set; }
+        public decimal Amount { get; set; }
         #endregion
 
         private int lastId;

@@ -8,11 +8,11 @@ namespace SecurityAnalysisTests
     {
         private const string DATABASE_FILE_NAME = "database.sqlite";
 
-        [TestMethod]
+        /*[TestMethod]
         public void getPath()
         {
 
             //Assert.AreEqual("")
-        }
+        }*/
     }
 }

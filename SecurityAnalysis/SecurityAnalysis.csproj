@@ -104,7 +104,12 @@
     <Compile Include="Core\Database\TransactionsTable.cs" />
     <Compile Include="Core\FileSystem\FileSystemHelper.cs" />
     <Compile Include="Core\Model\CalculatedStatisticsHelper.cs" />
+    <Compile Include="Core\Model\CashTransaction.cs" />
+    <Compile Include="Core\Model\Deposit.cs" />
+    <Compile Include="Core\Model\StockTransaction.cs" />
+    <Compile Include="Core\Model\Ticker.cs" />
     <Compile Include="Core\Model\Transaction.cs" />
+    <Compile Include="Core\Model\Withdrawl.cs" />
     <Compile Include="Core\RunTime\HttpContextManager.cs" />
     <Compile Include="DatabaseEntry\DatabaseEntry.aspx.cs">
       <DependentUpon>DatabaseEntry.aspx</DependentUpon>

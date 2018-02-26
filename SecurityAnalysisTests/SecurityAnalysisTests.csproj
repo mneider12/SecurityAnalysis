@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="SecurityAnalysis">
+      <HintPath>..\SecurityAnalysis\bin\SecurityAnalysis.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -54,6 +57,9 @@
   <ItemGroup>
     <Compile Include="Core\Database\DatabaseHelperTest.cs" />
     <Compile Include="Core\FileSystem\FileSystemHelperTest.cs" />
+    <Compile Include="Core\Model\TransactionTest.cs" />
+    <Compile Include="Core\Model\StockTransactionTest.cs" />
+    <Compile Include="Core\Model\TickerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

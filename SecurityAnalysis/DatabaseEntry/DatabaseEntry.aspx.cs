@@ -1,4 +1,4 @@
-﻿using SecurityAnalysis.Core.Transaction;
+﻿using SecurityAnalysis.Core.Model;
 using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
@@ -27,7 +27,8 @@ namespace SecurityAnalysis
 
             if (parseInputs(out date, out ticker, out numberOfShares, out totalCost))
             {
-                Transaction transaction = new Transaction(date, ticker, numberOfShares, totalCost);
+                Ticker t = new Ticker(ticker);
+                StockTransaction transaction = new StockTransaction(date, t, numberOfShares, totalCost);
                 if (!transaction.commit())
                 {
                     commitFailed();
